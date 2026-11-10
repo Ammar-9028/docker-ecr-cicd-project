@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CloudLaunch | Docker CI/CD Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="#">Cloud<span>Launch</span></a>
+    <span class="tag">DOCKER · AWS · CI/CD</span>
+  </header>
+
+  <main class="hero">
+    <div class="eyebrow"><span class="pulse"></span> DEPLOYED WITH AUTOMATION</div>
+    <h1>From code<br>to <span>cloud.</span></h1>
+    <p class="intro">A simple website delivered through Docker, Amazon ECR, EC2 and GitHub Actions.</p>
+    <div class="actions">
+      <a class="primary" href="https://github.com/Ammar-9028/docker-ecr-cicd-project" target="_blank" rel="noopener">View on GitHub ↗</a>
+      <a class="secondary" href="#workflow">See the workflow</a>
+    </div>
+    <section class="status-card" id="workflow">
+      <div class="status-head"><span class="status-dot"></span> Deployment pipeline</div>
+      <div class="steps">
+        <div><b>01</b><span>GitHub</span><small>Source code</small></div>
+        <i>→</i>
+        <div><b>02</b><span>Actions</span><small>Build image</small></div>
+        <i>→</i>
+        <div><b>03</b><span>Amazon ECR</span><small>Store image</small></div>
+        <i>→</i>
+        <div><b>04</b><span>EC2</span><small>Run container</small></div>
+      </div>
+    </section>
+  </main>
+  <footer>Built for learning · Docker + AWS · <span>CloudLaunch</span></footer>
+</body>
+</html>

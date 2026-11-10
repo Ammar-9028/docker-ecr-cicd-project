@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+body {
+  margin: 0; min-height: 100vh; color: #f3f6ff;
+  background: radial-gradient(ellipse at 50% 35%, #172a50 0%, #0a1223 48%, #070b14 100%);
+  font-family: 'Manrope', sans-serif;
+}
+.navbar {
+  height: 82px; padding: 0 8%; display: flex; align-items: center;
+  justify-content: space-between; border-bottom: 1px solid #ffffff12;
+}
+.brand { color: #fff; text-decoration: none; font-size: 22px; font-weight: 800; letter-spacing: -1px; }
+.brand span, footer span { color: #66e3c4; }
+.tag, .eyebrow, .status-head, .steps b {
+  font-family: 'DM Mono', monospace; letter-spacing: 1.5px;
+}
+.tag { color: #8e9bb5; font-size: 10px; }
+.hero { width: min(850px, 88%); margin: 105px auto 70px; text-align: center; }
+.eyebrow { color: #8debd4; font-size: 11px; display: inline-flex; align-items: center; gap: 10px; }
+.pulse, .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #66e3c4; box-shadow: 0 0 14px #66e3c4; }
+h1 { font-size: clamp(58px, 10vw, 100px); line-height: .98; letter-spacing: -7px; margin: 25px 0; font-weight: 800; }
+h1 span { color: #66e3c4; }
+.intro { max-width: 570px; margin: 0 auto; color: #aab6cc; font-size: 17px; line-height: 1.8; }
+.actions { display: flex; justify-content: center; gap: 14px; margin: 34px 0 70px; flex-wrap: wrap; }
+.actions a { padding: 14px 21px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 13px; }
+.primary { background: #66e3c4; color: #07131c; }
+.secondary { border: 1px solid #ffffff30; color: #e6edfa; }
+.status-card { text-align: left; padding: 25px; border: 1px solid #ffffff20; border-radius: 14px; background: #ffffff08; box-shadow: 0 25px 80px #0005; }
+.status-head { display: flex; align-items: center; gap: 10px; color: #dce6f7; font-size: 11px; margin-bottom: 25px; }
+.steps { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.steps div { display: flex; flex-direction: column; gap: 7px; }
+.steps b { color: #66e3c4; font-size: 11px; }
+.steps span { font-weight: 700; font-size: 14px; }
+.steps small { color: #8492aa; font-size: 11px; }
+.steps i { color: #52617a; font-style: normal; }
+footer { text-align: center; padding: 25px; color: #78869e; font-size: 11px; border-top: 1px solid #ffffff12; }
+@media (max-width: 600px) {
+  .navbar { padding: 0 6%; } .tag { font-size: 8px; }
+  .hero { margin-top: 75px; } h1 { letter-spacing: -4px; }
+  .steps { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .steps i { display: none; }
+}
