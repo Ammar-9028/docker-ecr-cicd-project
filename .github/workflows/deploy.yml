@@ -1,0 +1,56 @@
+
+name: Docker ECR Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  IMAGE_REPOSITORY: 289829300853.dkr.ecr.us-east-2.amazonaws.com
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2
+
+      - name: Login to ECR
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ env.IMAGE_REPOSITORY }}/ammar-repo:${{ github.sha }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Deploy on EC2
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.IPADDRESS }}
+          username: ubuntu
+          key: ${{ secrets.KEY }}
+          port: 22
+          script: |
+            aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 289829300853.dkr.ecr.us-east-2.amazonaws.com
+
+            docker pull 289829300853.dkr.ecr.us-east-2.amazonaws.com/ammar-repo:${{ github.sha }}
+
+            docker rm -f cloudlaunch || true
+
+            docker run -d -p 80:80 --name cloudlaunch 289829300853.dkr.ecr.us-east-2.amazonaws.com/ammar-repo:${{ github.sha }}
