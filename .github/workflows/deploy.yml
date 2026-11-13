@@ -42,7 +42,7 @@ jobs:
       - name: Deploy on EC2
         uses: appleboy/ssh-action@v1
         with:
-          host: ${{ secrets.IPADDRESS }}
+          host: ${{ secrets.IPADRESS }}
           username: ubuntu
           key: ${{ secrets.KEY }}
           port: 22
